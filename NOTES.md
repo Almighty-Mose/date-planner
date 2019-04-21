@@ -6,12 +6,12 @@
 We'll use the Zomato API to query a location (Phoenix, etc) for a list of restaurants to then filter by the user's inputted preferences.
  
 Flow is thus:
-	User fills out quiz
-	Redux Thunk makes GET /search request to Zomato
-	Redux Thunk receives list of restaurants matching location
-	Redux Thunk filters results based on user form input (ratings, price, etc)
-	Redux stores those restaurants in state
-	React displays those to user
+- User fills out quiz
+- Redux Thunk makes GET /search request to Zomato
+- Redux Thunk receives list of restaurants matching location
+- Redux Thunk filters results based on user form input (ratings, price, etc)
+- Redux stores those restaurants in state
+- React displays those to user
 
 Use create-react-app
 
@@ -75,17 +75,34 @@ I want it to also have a 'skip' feature to bypass a section/question a user does
 Redux for state
 	What would our store look like?
 	Contains the ongoing results of the quiz? Maybe that way a user could go backwards through the form
-	 - Each answer gets sent to the store (Answer1, Answer2, etc) then at the end of the quiz we submit that 	   information and do what with it? How do we make the recommendation?
+	 - Each answer gets sent to the store (Answer1, Answer2, etc) then at the end of the quiz we submit that information and do what with it? How do we make the recommendation?
 		An API call to Zomato (see above).
 
 ## Rails API for data persistence - Users/Favorites/Restaurants
-  >
-  > This is done!
-  >
+### **TODO**
+- Add Google Oauth
+- Add Facebook Oauth
+- Validate User attributes
+  + Email must be valid/exist
+  + Name must exist
+  + Password must exist
+  + Location must be zipcode
+- Validate Restaurant attributes
+- Figure out how to handle sessions
+- CRUD actions for restaurant
+  1. Create
+    + Handled by Zomato API search
+    + Submission of search form passes JSON result of API call to local API in POST request
+    + New restaurant is created
+    + New restaurant is added to user's favorites?
+  2. Read
+    + This will be handled by the React App
+  3. Update
+    + Is there a need to update restaurant entries manually?
+    + Perhaps a recurring 'database maintenance' request which auto updates all the restaurant entries against Zomato
+  4. Delete
+    + Remove from favorites?
 
-  >
-  > **BUILD A SEED FILE FROM CSV CAUSE IT'S FUN**
-  >
 	Gathered some good ideas here. 
 	The database is going to store a Restaurant model, which I'll create via the info pulled from the Zomato API requests. That way, over time I can check if my database already contains an entry for that info instead of 	making an external request. 
 	
