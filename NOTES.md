@@ -79,6 +79,13 @@ Redux for state
 		An API call to Zomato (see above).
 
 ## Rails API for data persistence - Users/Favorites/Restaurants
+  >
+  > This is done!
+  >
+
+  >
+  > **BUILD A SEED FILE FROM CSV CAUSE IT'S FUN**
+  >
 	Gathered some good ideas here. 
 	The database is going to store a Restaurant model, which I'll create via the info pulled from the Zomato API requests. That way, over time I can check if my database already contains an entry for that info instead of 	making an external request. 
 	
