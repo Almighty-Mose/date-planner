@@ -1,5 +1,6 @@
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import UsersContainer from './components/containers/UsersContainer';
 import './App.css';
 
@@ -12,7 +13,7 @@ const StyledHeader = styled.header`
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-`
+`;
 
 class App extends Component {
   render() {
