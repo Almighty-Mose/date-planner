@@ -3,13 +3,28 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const SidebarStyle = styled.div`
-  display: inline;
   border: 2px solid blue;
 `;
 
 class QuizSidebar extends Component {
   render() {
-    return <SidebarStyle>QuizSidebar!</SidebarStyle>;
+    const { questions } = this.props;
+    return (
+      <SidebarStyle>
+        <p>{questions.price.ask}</p>
+        <ul>
+          {questions.price.answers.map(answer => (
+            <li>{answer}</li>
+          ))}
+        </ul>
+        <p>{questions.distance.ask}</p>
+        <ul>
+          {questions.distance.answers.map(answer => (
+            <li>{answer}</li>
+          ))}
+        </ul>
+      </SidebarStyle>
+    );
   }
 }
 

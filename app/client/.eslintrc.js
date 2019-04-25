@@ -25,7 +25,7 @@ module.exports = {
         "ignoreUrls": true,
         "ignoreStrings": true,
         "ignoreTemplateLiterals": true,
-        "ignoreRegExpLiterals": true
+        "ignoreRegExpLiterals": true,
       }
     ]
   }
