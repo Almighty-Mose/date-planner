@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import QuizSidebar from '../QuizSidebar';
+import Quiz from '../Quiz';
 
 const QuizContainerStyle = styled.div`
   border: 2px solid red;
@@ -42,6 +43,7 @@ class QuizContainer extends Component {
     return (
       <QuizContainerStyle>
         <QuizSidebar questionNames={questionNames} />
+        <Quiz questions={questions} />
       </QuizContainerStyle>
     );
   }

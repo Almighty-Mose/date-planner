@@ -14,18 +14,6 @@ class QuizSidebar extends Component {
         {questionNames.map(name => (
           <li>{name}</li>
         ))}
-        {/* <p>{questions.price.ask}</p>
-        <ul>
-          {questions.price.answers.map(answer => (
-            <li>{answer}</li>
-          ))}
-        </ul>
-        <p>{questions.distance.ask}</p>
-        <ul>
-          {questions.distance.answers.map(answer => (
-            <li>{answer}</li>
-          ))}
-        </ul> */}
       </SidebarStyle>
     );
   }
