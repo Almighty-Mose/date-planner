@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import UsersContainer from './components/containers/UsersContainer';
-import './App.css';
+import QuizContainer from './components/containers/QuizContainer';
 
 const StyledHeader = styled.header`
   background-color: #282c34;
@@ -22,6 +22,7 @@ class App extends Component {
         <StyledHeader>
           <UsersContainer />
         </StyledHeader>
+        <QuizContainer />
       </div>
     );
   }
