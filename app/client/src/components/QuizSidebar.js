@@ -8,10 +8,13 @@ const SidebarStyle = styled.div`
 
 class QuizSidebar extends Component {
   render() {
-    const { questions } = this.props;
+    const { questionNames } = this.props;
     return (
       <SidebarStyle>
-        <p>{questions.price.ask}</p>
+        {questionNames.map(name => (
+          <li>{name}</li>
+        ))}
+        {/* <p>{questions.price.ask}</p>
         <ul>
           {questions.price.answers.map(answer => (
             <li>{answer}</li>
@@ -22,7 +25,7 @@ class QuizSidebar extends Component {
           {questions.distance.answers.map(answer => (
             <li>{answer}</li>
           ))}
-        </ul>
+        </ul> */}
       </SidebarStyle>
     );
   }

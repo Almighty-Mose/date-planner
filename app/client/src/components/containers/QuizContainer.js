@@ -37,9 +37,11 @@ class QuizContainer extends Component {
   }
 
   render() {
+    const { questions } = this.state;
+    const questionNames = Object.keys(questions);
     return (
       <QuizContainerStyle>
-        <QuizSidebar questions={this.state.questions} />
+        <QuizSidebar questionNames={questionNames} />
       </QuizContainerStyle>
     );
   }
