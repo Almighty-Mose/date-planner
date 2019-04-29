@@ -25,7 +25,6 @@ Single HTML page to render
 
 I want a quiz that displays progress through the quiz and answers in a sidebar while you're taking the quiz.
 I want it to have a top-level state, perhaps in the Redux store, so the quiz and sidebar share state.
-I want it to be routed, via question URLs, which would make it possible to 'back up' through the quiz.
 It will contain these questions: (make em cheeky!)
 Price - $, $$, $$$, $$\$\$
 Distance - 5, 10, 15, 20 miles/ranges
@@ -33,6 +32,19 @@ Cuisine - American, Chinese, Burgers, Pizza, etc.
 Atmosphere (if possible) - Quiet/Loud, Casual/Upscale
 Food Options - V/Veg/GF/K
 I want it to also have a 'skip' feature to bypass a section/question a user doesn't need.
+
+## ZOMATO API
+
+Zomato runs on ids for everything, locations, cuisine types, collections. I'm wondering if I could store these in my app to minimize API calls to Zomato (but you get 1000 calls per day, so think about that.)
+
+### Relevant endpoints:
+  + /cities - Returns a city_id which we can use with /search
+  + /collections - collection_id: "1" will probably always be "trending this week", which could really trim our results.
+  + /cuisines - Gives us a list of cuisines in a city, can trim our results.
+  + /search - Big boy. It's from here we'll get our final result most likely.
+To search a particular location for restaurants, we need this info:
+  - Api Key
+  - city_id
 
 ## PROJECT REQUIREMENTS
 

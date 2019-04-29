@@ -4,6 +4,9 @@ import QuizSidebar from '../QuizSidebar';
 import Quiz from '../Quiz';
 
 const QuizContainerStyle = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
   border: 2px solid red;
 `;
 

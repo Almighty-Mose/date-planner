@@ -8,11 +8,15 @@ const StyledHeader = styled.header`
   background-color: #282c34;
   min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   font-size: calc(10px + 2vmin);
   color: white;
+`;
+
+const StyledH2 = styled.h2`
+  margin: auto 10px auto;
 `;
 
 class App extends Component {
@@ -20,6 +24,7 @@ class App extends Component {
     return (
       <div className="App">
         <StyledHeader>
+          <StyledH2>Date Planner</StyledH2>
           <UsersContainer />
         </StyledHeader>
         <QuizContainer />
