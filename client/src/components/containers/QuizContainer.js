@@ -46,8 +46,8 @@ class QuizContainer extends Component {
     const questionNames = Object.keys(questions);
     return (
       <QuizContainerStyle>
-        <QuizSidebar questionNames={questionNames} />
-        <Quiz questions={questions} />
+        {/* <QuizSidebar questionNames={questionNames} /> */}
+        <Quiz questions={questions} questionNames={questionNames} />
       </QuizContainerStyle>
     );
   }
