@@ -34,7 +34,7 @@ class QuizContainer extends Component {
         },
         distance: {
           ask: 'How far you wanna go?',
-          answers: ['5', '10', '15', '20'],
+          answers: ['<5', '5-10', '10-15', '>20'],
         },
       },
     };
