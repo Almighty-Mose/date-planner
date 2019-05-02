@@ -8,6 +8,18 @@ import React, { Component } from 'react';
 // We need a Radio Button component to generate
 // Radio will need to take in some sort of props to dynamically
 // render data attributes.
+// this.state = {
+//   questions: {
+//     price: {
+//       ask: 'How much do you want to spend?',
+//       answers: ['$', '$$', '$$$', '$$$$'],
+//     },
+//     distance: {
+//       ask: 'How far you wanna go?',
+//       answers: ['5', '10', '15', '20'],
+//     },
+//   },
+// };
 
 // const Radio = props => {
 //   const { qName } = props;
@@ -18,14 +30,65 @@ import React, { Component } from 'react';
 //   );
 // };
 
-// const RadioGroup = props => {
-//   const { questions } = props;
-//   const radioButtons = Object.keys(questions).forEach(name => {
-//     <Radio qName={name} />
-//     console.log(questions[name].answers);
-//   });
-//   return <p>Yo.</p>;
-// };
+// Each Radio Group is responsible for one question (price, distance)
+// It renders the actual ask and 4 Radio components, 1 for each answer
+// It will take in a prop of one question object, passed to it by Quiz
+
+const RadioGroup = props => {
+  const { handleChange, price } = props;
+  return (
+    <div>
+      <p>How much you wanna spend?</p>
+      <label htmlFor="price1">
+        <input
+          type="radio"
+          id="price1"
+          name="price"
+          value="$"
+          checked={price === '$'}
+          onChange={handleChange}
+        />
+        $
+      </label>
+      <br />
+      <label htmlFor="price2">
+        <input
+          type="radio"
+          id="price2"
+          name="price"
+          value="$$"
+          checked={price === '$$'}
+          onChange={handleChange}
+        />
+        $$
+      </label>
+      <br />
+      <label htmlFor="price3">
+        <input
+          type="radio"
+          id="price3"
+          name="price"
+          value="$$$"
+          checked={price === '$$$'}
+          onChange={handleChange}
+        />
+        $$$
+      </label>
+      <br />
+      <label htmlFor="price4">
+        <input
+          type="radio"
+          id="price4"
+          name="price"
+          value="$$$$"
+          checked={price === '$$$$'}
+          onChange={handleChange}
+        />
+        $$$$
+      </label>
+    </div>
+  );
+};
 
 class Quiz extends Component {
   constructor() {
@@ -56,55 +119,8 @@ class Quiz extends Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          {/* <RadioGroup questions={questions} /> */}
-          <p>How much you wanna spend?</p>
-          <label htmlFor="price1">
-            <input
-              type="radio"
-              id="price1"
-              name="price"
-              value="$"
-              checked={price === '$'}
-              onChange={this.handleChange}
-            />
-            $
-          </label>
-          <br />
-          <label htmlFor="price2">
-            <input
-              type="radio"
-              id="price2"
-              name="price"
-              value="$$"
-              checked={price === '$$'}
-              onChange={this.handleChange}
-            />
-            $$
-          </label>
-          <br />
-          <label htmlFor="price3">
-            <input
-              type="radio"
-              id="price3"
-              name="price"
-              value="$$$"
-              checked={price === '$$$'}
-              onChange={this.handleChange}
-            />
-            $$$
-          </label>
-          <br />
-          <label htmlFor="price4">
-            <input
-              type="radio"
-              id="price4"
-              name="price"
-              value="$$$$"
-              checked={price === '$$$$'}
-              onChange={this.handleChange}
-            />
-            $$$$
-          </label>
+          <RadioGroup handleChange={this.handleChange} price={price} />
+
           <br />
           <p>How far you wanna go?</p>
           <label htmlFor="distance1">
