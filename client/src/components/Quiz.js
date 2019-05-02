@@ -63,7 +63,8 @@ class Quiz extends Component {
     });
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
+    event.preventDefault();
     const { price, distance } = this.state;
     alert(`You chose ${price} and ${distance}`);
   }
