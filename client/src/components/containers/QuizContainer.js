@@ -47,7 +47,7 @@ class QuizContainer extends Component {
     return (
       <QuizContainerStyle>
         <QuizSidebar questionNames={questionNames} />
-        <Quiz questions={questions} questionNames={questionNames} />
+        <Quiz questions={questions} />
       </QuizContainerStyle>
     );
   }

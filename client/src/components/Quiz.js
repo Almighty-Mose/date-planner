@@ -41,16 +41,6 @@ class Quiz extends Component {
     this.state = {
       price: '',
       distance: '',
-      questions: {
-        price: {
-          ask: 'How much do you want to spend?',
-          answers: ['$', '$$', '$$$', '$$$$'],
-        },
-        distance: {
-          ask: 'How many miles you wanna go?',
-          answers: ['<5', '5-10', '10-15', '>20'],
-        },
-      },
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -70,7 +60,8 @@ class Quiz extends Component {
   }
 
   render() {
-    const { price, distance, questions } = this.state;
+    const { price, distance } = this.state;
+    const { questions } = this.props;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
