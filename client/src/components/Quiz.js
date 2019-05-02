@@ -1,38 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-
-// Each Radio Group is responsible for one question (price, distance)
-// It renders the actual ask and 4 Radio components, 1 for each answer
-// It will take in a prop of one question object, passed to it by Quiz
-
-const RadioGroup = props => {
-  const { handleChange, stateValue, question, name } = props;
-  const radioButtons = question.answers.map((answer, index) => {
-    const id = `${name}${index}`;
-    return (
-      <>
-        <label htmlFor={id}>
-          <input
-            type="radio"
-            id={id}
-            name={name}
-            value={answer}
-            checked={stateValue === answer}
-            onChange={handleChange}
-          />
-          {answer}
-        </label>
-        <br />
-      </>
-    );
-  });
-  return (
-    <div>
-      <p>{question.ask}</p>
-      {radioButtons}
-    </div>
-  );
-};
+import RadioGroup from './RadioGroup';
 
 class Quiz extends Component {
   constructor() {
