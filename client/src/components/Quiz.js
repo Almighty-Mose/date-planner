@@ -10,16 +10,6 @@ class Quiz extends Component {
       price: '',
       distance: '',
       cuisine: '',
-
-      cuisineOptions: [
-        'American',
-        'Chinese',
-        'Vietnamese',
-        'Mexican',
-        'Italian',
-        'Burgers',
-        'Pizza',
-      ],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -67,7 +57,7 @@ class Quiz extends Component {
             <option value="" disabled>
               Select a cuisine, yo.
             </option>
-            {cuisineOptions.map(option => {
+            {questions.cuisines.answers.map(option => {
               return (
                 <option key={option} value={option} label={option}>
                   {option}

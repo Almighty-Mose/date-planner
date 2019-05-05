@@ -36,6 +36,18 @@ class QuizContainer extends Component {
           ask: 'How far you wanna go?',
           answers: ['<5', '5-10', '10-15', '>20'],
         },
+        cuisines: {
+          ask: 'Whatchu wanna eat?',
+          answers: [
+            'American',
+            'Chinese',
+            'Vietnamese',
+            'Mexican',
+            'Italian',
+            'Burgers',
+            'Pizza',
+          ],
+        },
       },
     };
   }
