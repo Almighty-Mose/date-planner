@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import RadioGroup from './RadioGroup';
+import Select from './Select';
 
 class Quiz extends Component {
   constructor() {
@@ -29,7 +30,7 @@ class Quiz extends Component {
   }
 
   render() {
-    const { price, distance, cuisine, cuisineOptions } = this.state;
+    const { price, distance, cuisine } = this.state;
     const { questions } = this.props;
     return (
       <div>
@@ -52,19 +53,11 @@ class Quiz extends Component {
 
           <br />
 
-          <p>Whatchu wanna eat?</p>
-          <select name="cuisine" value={cuisine} onChange={this.handleChange}>
-            <option value="" disabled>
-              Select a cuisine, yo.
-            </option>
-            {questions.cuisines.answers.map(option => {
-              return (
-                <option key={option} value={option} label={option}>
-                  {option}
-                </option>
-              );
-            })}
-          </select>
+          <Select
+            handleChange={this.handleChange}
+            question={questions.cuisine}
+            stateValue={cuisine}
+          />
 
           <br />
           <button type="submit">CHOOOOOOOSE</button>
