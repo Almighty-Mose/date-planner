@@ -9,6 +9,17 @@ class Quiz extends Component {
     this.state = {
       price: '',
       distance: '',
+      cuisine: '',
+
+      cuisineOptions: [
+        'American',
+        'Chinese',
+        'Vietnamese',
+        'Mexican',
+        'Italian',
+        'Burgers',
+        'Pizza',
+      ],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -23,12 +34,12 @@ class Quiz extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { price, distance } = this.state;
-    alert(`You chose ${price} and ${distance}`);
+    const { price, distance, cuisine } = this.state;
+    alert(`You chose ${price}, ${distance} and ${cuisine}`);
   }
 
   render() {
-    const { price, distance } = this.state;
+    const { price, distance, cuisine, cuisineOptions } = this.state;
     const { questions } = this.props;
     return (
       <div>
@@ -48,6 +59,24 @@ class Quiz extends Component {
             question={questions.distance}
             name={Object.keys(questions)[1]}
           />
+
+          <br />
+
+          <p>Whatchu wanna eat?</p>
+          <select name="cuisine" value={cuisine} onChange={this.handleChange}>
+            <option value="" disabled>
+              Select a cuisine, yo.
+            </option>
+            {cuisineOptions.map(option => {
+              return (
+                <option key={option} value={option} label={option}>
+                  {option}
+                </option>
+              );
+            })}
+          </select>
+
+          <br />
           <button type="submit">CHOOOOOOOSE</button>
         </form>
       </div>
