@@ -15,7 +15,7 @@ class QuizSidebar extends Component {
     return (
       <SidebarStyle>
         {questionNames.map(name => (
-          <li>{name}</li>
+          <li key={name}>{name}</li>
         ))}
       </SidebarStyle>
     );

@@ -6,7 +6,7 @@ const RadioGroup = props => {
   const radioButtons = question.answers.map((answer, index) => {
     const id = `${name}${index}`;
     return (
-      <>
+      <div key={id}>
         <label htmlFor={id}>
           <input
             type="radio"
@@ -19,7 +19,7 @@ const RadioGroup = props => {
           {answer}
         </label>
         <br />
-      </>
+      </div>
     );
   });
   return (
