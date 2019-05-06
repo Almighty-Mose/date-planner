@@ -6,7 +6,7 @@ const Select = props => {
   return (
     <>
       <p>{question.ask}</p>
-      <select name="stateValue" value={stateValue} onChange={handleChange}>
+      <select name="cuisine" value={stateValue} onChange={handleChange}>
         <option value="" disabled>
           Select a cuisine, yo.
         </option>

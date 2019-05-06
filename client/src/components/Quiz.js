@@ -8,6 +8,7 @@ class Quiz extends Component {
     super();
 
     this.state = {
+      location: '',
       price: '',
       distance: '',
       cuisine: '',
@@ -25,16 +26,27 @@ class Quiz extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { price, distance, cuisine } = this.state;
-    alert(`You chose ${price}, ${distance} and ${cuisine}`);
+    const { location, price, distance, cuisine } = this.state;
+    alert(`You chose ${location}, ${price}, ${distance} and ${cuisine}`);
   }
 
+  // TODO: We could probably abstract the RadioGroup again.
   render() {
-    const { price, distance, cuisine } = this.state;
+    const { location, price, distance, cuisine } = this.state;
     const { questions } = this.props;
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+          <p>Where you at?</p>
+          <label htmlFor="location">
+            <input
+              type="text"
+              name="location"
+              value={location}
+              onChange={this.handleChange}
+            />
+          </label>
+
           <RadioGroup
             handleChange={this.handleChange}
             stateValue={price}

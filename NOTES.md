@@ -80,6 +80,8 @@ What would our store look like?
 Contains the ongoing results of the quiz? Maybe that way a user could go backwards through the form - Each answer gets sent to the store (Answer1, Answer2, etc) then at the end of the quiz we submit that information and do what with it? How do we make the recommendation?
 An API call to Zomato (see above).
 
+> In making our restaurant recommendation, we want to get as close as we can to a 'perfect answer' without returning no results, i.e., we always want to make SOME recommendation. Therefore, we need to do the business of sorting our returned info from Zomato on our side. We just want to get INFO from Zomato, not make Zomato do our work for us. So, once we are returned a list of restaurants, we need to assign them a weight and then sort by that weight. Each answer to the quiz will be assigned a value of 0 or 1, depending on if the restaurant meets that criteria or not. We can then sort by that weight, and give back the highest result (if there's more than one result with top weight, pick one), thus giving the best possible recommendation given a certain input. So all we really need to decide is what we want Zomato to filter by. Cuisine type is probably a good candidate, no sense returning pizza restaurants if the user wants steak. Price and distance are usually negotiable attributes. We want to only choose high rated places as well, so perhaps we can filter by that in the initial Zomato call.
+
 ## Rails API for data persistence - Users/Favorites/Restaurants
 
 ### **TODO**
