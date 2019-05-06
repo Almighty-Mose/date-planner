@@ -10,18 +10,6 @@ const QuizContainerStyle = styled.div`
   border: 2px solid red;
 `;
 
-/*  
-QuizContainer will contain the state for all the
-quiz information: Current Question, the answers
-I need a questions object with a name, ask, and answers property.
- questions = {
-  price: {
-    ask: "How much do you want to spend?",
-    answers: ["$", "$$", "$$$", "$$$$"]
-  }
-}
-*/
-
 class QuizContainer extends Component {
   constructor(props) {
     super(props);
