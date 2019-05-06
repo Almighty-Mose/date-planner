@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import RadioGroup from './RadioGroup';
@@ -16,12 +17,27 @@ class Quiz extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCitySubmit = this.handleCitySubmit.bind(this);
+  }
+
+  fetchCity(location) {
+    const url = `https://developers.zomato.com/api/v2.1/cities?q=${location}`;
+    const apiKey = process.env.REACT_APP_USER_KEY;
+    fetch(url, { headers: { 'user-key': apiKey } })
+      .then(response => response.json())
+      .then(json => console.log(json));
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
     });
+  }
+
+  handleCitySubmit(event) {
+    event.preventDefault();
+    const { location } = this.state;
+    this.fetchCity(location);
   }
 
   handleSubmit(event) {
@@ -36,7 +52,7 @@ class Quiz extends Component {
     const { questions } = this.props;
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleCitySubmit}>
           <p>Where you at?</p>
           <label htmlFor="location">
             <input
@@ -46,7 +62,9 @@ class Quiz extends Component {
               onChange={this.handleChange}
             />
           </label>
-
+          <input type="submit" value="Upload Location to Hive" />
+        </form>
+        <form onSubmit={this.handleSubmit}>
           <RadioGroup
             handleChange={this.handleChange}
             stateValue={price}

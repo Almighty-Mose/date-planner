@@ -33,6 +33,16 @@ Atmosphere (if possible) - Quiet/Loud, Casual/Upscale
 Food Options - V/Veg/GF/K
 I want it to also have a 'skip' feature to bypass a section/question a user doesn't need.
 
+# MULTI-STEP FORM
+  Okay, so routing this as answering each question individually and sequentially makes sense. The very first thing I need to ask is location, which I can then use to query Zomato for the city_id, which I will need to do basically anything else. Once we have location, I can query for all the cuisines in that area to populate the Cuisine question, so they can only select from cuisines that exist in their area.
+  + Location (Where you at?)
+    - City_id (API CALL)
+  + Price
+  + Distance
+  + Cuisine
+    - Requires city_id
+    - Cuisine_ids 
+
 ## ZOMATO API
 
 Zomato runs on ids for everything, locations, cuisine types, collections. I'm wondering if I could store these in my app to minimize API calls to Zomato (but you get 1000 calls per day, so think about that.)
