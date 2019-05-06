@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import QuizSidebar from '../QuizSidebar';
@@ -40,6 +41,14 @@ class QuizContainer extends Component {
     };
   }
 
+  fetchCity(location) {
+    const url = `https://developers.zomato.com/api/v2.1/cities?q=${location}`;
+    const apiKey = process.env.REACT_APP_USER_KEY;
+    fetch(url, { headers: { 'user-key': apiKey } })
+      .then(response => response.json())
+      .then(json => console.log(json));
+  }
+
   render() {
     const { questions } = this.state;
 
@@ -47,7 +56,7 @@ class QuizContainer extends Component {
     return (
       <QuizContainerStyle>
         <QuizSidebar questionNames={questionNames} />
-        <Quiz questions={questions} />
+        <Quiz questions={questions} fetchCity={this.fetchCity} />
       </QuizContainerStyle>
     );
   }

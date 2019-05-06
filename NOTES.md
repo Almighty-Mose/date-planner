@@ -36,7 +36,8 @@ I want it to also have a 'skip' feature to bypass a section/question a user does
 # MULTI-STEP FORM
   Okay, so routing this as answering each question individually and sequentially makes sense. The very first thing I need to ask is location, which I can then use to query Zomato for the city_id, which I will need to do basically anything else. Once we have location, I can query for all the cuisines in that area to populate the Cuisine question, so they can only select from cuisines that exist in their area.
   + Location (Where you at?)
-    - City_id (API CALL)
+    - City_id (API CALL) - THIS IS DONE.
+      We now fetch a city_id based on an entered location.
   + Price
   + Distance
   + Cuisine

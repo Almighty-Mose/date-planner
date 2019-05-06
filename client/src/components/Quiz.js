@@ -5,8 +5,8 @@ import RadioGroup from './RadioGroup';
 import Select from './Select';
 
 class Quiz extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       location: '',
@@ -20,14 +20,6 @@ class Quiz extends Component {
     this.handleCitySubmit = this.handleCitySubmit.bind(this);
   }
 
-  fetchCity(location) {
-    const url = `https://developers.zomato.com/api/v2.1/cities?q=${location}`;
-    const apiKey = process.env.REACT_APP_USER_KEY;
-    fetch(url, { headers: { 'user-key': apiKey } })
-      .then(response => response.json())
-      .then(json => console.log(json));
-  }
-
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value,
@@ -37,7 +29,8 @@ class Quiz extends Component {
   handleCitySubmit(event) {
     event.preventDefault();
     const { location } = this.state;
-    this.fetchCity(location);
+    const { fetchCity } = this.props;
+    fetchCity(location);
   }
 
   handleSubmit(event) {
