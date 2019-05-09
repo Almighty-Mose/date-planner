@@ -42,7 +42,7 @@ class Quiz extends Component {
   // TODO: We could probably abstract the RadioGroup again.
   render() {
     const { location, price, distance, cuisine } = this.state;
-    const { questions } = this.props;
+    const { questions, cuisines } = this.props;
     return (
       <div>
         <form onSubmit={this.handleCitySubmit}>
@@ -80,6 +80,7 @@ class Quiz extends Component {
             handleChange={this.handleChange}
             question={questions.cuisine}
             stateValue={cuisine}
+            cuisines={cuisines}
           />
 
           <br />

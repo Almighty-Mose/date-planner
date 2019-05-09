@@ -2,7 +2,7 @@
 import React from 'react';
 
 const Select = props => {
-  const { question, stateValue, handleChange } = props;
+  const { question, cuisines, stateValue, handleChange } = props;
   return (
     <>
       <p>{question.ask}</p>
@@ -10,7 +10,7 @@ const Select = props => {
         <option value="" disabled>
           Select a cuisine, yo.
         </option>
-        {question.answers.map(option => {
+        {cuisines.map(option => {
           return (
             <option key={option} value={option} label={option}>
               {option}

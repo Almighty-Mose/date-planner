@@ -27,18 +27,13 @@ class QuizContainer extends Component {
         },
         cuisine: {
           ask: 'Whatchu wanna eat?',
-          answers: [
-            'American',
-            'Chinese',
-            'Vietnamese',
-            'Mexican',
-            'Italian',
-            'Burgers',
-            'Pizza',
-          ],
         },
       },
+      cuisineAnswers: [],
     };
+
+    this.fetchCity = this.fetchCity.bind(this);
+    this.fetchCuisines = this.fetchCuisines.bind(this);
   }
 
   fetchCity(location) {
@@ -46,17 +41,36 @@ class QuizContainer extends Component {
     const apiKey = process.env.REACT_APP_USER_KEY;
     fetch(url, { headers: { 'user-key': apiKey } })
       .then(response => response.json())
-      .then(json => console.log(json));
+      .then(data => {
+        const cityId = data.location_suggestions[0].id;
+        this.fetchCuisines(cityId);
+      });
+  }
+
+  fetchCuisines(cityId) {
+    const url = `https://developers.zomato.com/api/v2.1/cuisines?city_id=${cityId}`;
+    const apiKey = process.env.REACT_APP_USER_KEY;
+    fetch(url, { headers: { 'user-key': apiKey } })
+      .then(response => response.json())
+      .then(data => {
+        const cuisineList = data.cuisines.map(c => c.cuisine.cuisine_name);
+        this.setState({ cuisineAnswers: cuisineList });
+        // Unstuck!!!! De-nested cuisineAnswers.
+      });
   }
 
   render() {
-    const { questions } = this.state;
+    const { questions, cuisineAnswers } = this.state;
 
     const questionNames = Object.keys(questions);
     return (
       <QuizContainerStyle>
         <QuizSidebar questionNames={questionNames} />
-        <Quiz questions={questions} fetchCity={this.fetchCity} />
+        <Quiz
+          cuisines={cuisineAnswers}
+          questions={questions}
+          fetchCity={this.fetchCity}
+        />
       </QuizContainerStyle>
     );
   }
