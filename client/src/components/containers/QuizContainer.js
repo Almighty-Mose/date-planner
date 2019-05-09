@@ -44,7 +44,8 @@ class QuizContainer extends Component {
       .then(data => {
         const cityId = data.location_suggestions[0].id;
         this.fetchCuisines(cityId);
-      });
+      })
+      .catch(error => console.log(error));
   }
 
   fetchCuisines(cityId) {
@@ -56,7 +57,8 @@ class QuizContainer extends Component {
         const cuisineList = data.cuisines.map(c => c.cuisine.cuisine_name);
         this.setState({ cuisineAnswers: cuisineList });
         // Unstuck!!!! De-nested cuisineAnswers.
-      });
+      })
+      .catch(error => console.log(error));
   }
 
   render() {
