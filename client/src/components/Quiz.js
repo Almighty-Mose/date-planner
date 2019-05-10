@@ -57,6 +57,7 @@ class Quiz extends Component {
           </label>
           <input type="submit" value="Upload Location to Hive" />
         </form>
+
         <form onSubmit={this.handleSubmit}>
           <RadioGroup
             handleChange={this.handleChange}

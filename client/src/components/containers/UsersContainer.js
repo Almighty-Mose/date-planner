@@ -39,18 +39,14 @@ const StyledButton = styled.button`
 //   box-shadow: 0px 1px 6pxrgba 0, 0, 0, 0.4;
 // `;
 
-const StyledContainer = styled.div`
-  
-`;
-
 class UsersContainer extends Component {
   // TODO: GET request to check for a logged in user after setting up Devise.
   render() {
     return (
-      <StyledContainer>
+      <>
         <StyledButton>Sign Up</StyledButton>
         <StyledButton>Login</StyledButton>
-      </StyledContainer>
+      </>
     );
   }
 }
