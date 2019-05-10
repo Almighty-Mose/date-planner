@@ -7,7 +7,7 @@ import QuizContainer from './components/containers/QuizContainer';
 const StyledHeader = styled.header`
   background-color: #282c34;
   min-height: 10vh;
-  display: flex;
+  /* display: flex; */
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
@@ -17,6 +17,7 @@ const StyledHeader = styled.header`
 
 const StyledH2 = styled.h2`
   margin: auto 10px auto;
+  float: left;
 `;
 
 class App extends Component {

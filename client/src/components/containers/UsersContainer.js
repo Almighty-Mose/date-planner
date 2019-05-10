@@ -3,17 +3,28 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
+  float: right;
+  position: relative;
+  top: 15px;
+  right: 10px;
   font-size: 0.75em;
   margin: 0.25em;
   padding: 0.25em 1em;
   border: 2px solid white;
   border-radius: 10px;
-  right: 0;
   background-color: green;
   color: white;
   &:hover {
-    background-color: white;
-    color: green;
+    animation-name: color;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes color {
+    100% {
+      background-color: white;
+      color: green;
+    }
   }
 `;
 
@@ -29,8 +40,7 @@ const StyledButton = styled.button`
 // `;
 
 const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+  
 `;
 
 class UsersContainer extends Component {
