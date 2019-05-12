@@ -1,8 +1,65 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import RadioGroup from './RadioGroup';
 import Select from './Select';
+
+const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 20px auto;
+  background: #fff;
+  padding: 20px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+`;
+
+const Form = styled.form`
+  padding: 9px;
+  border: 1px solid #dddddd;
+  margin-bottom: 10px;
+  border-radius: 3px;
+`;
+
+const Input = styled.input`
+  box-sizing: border-box;
+  width: 95%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #dddddd;
+  height: 32px;
+  line-height: 25px;
+  font-size: 30px;
+  padding: 0px 0px 2px;
+  margin: 0px 0px 5px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+`;
+
+const Label = styled.label`
+  position: relative;
+  bottom: 20px;
+  background: #ffffff;
+  height: 24px;
+  padding: 2px 5px 2px 5px;
+  color: #b9b9b9;
+  font-size: 20px;
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+`;
+
+const Button = styled.button`
+  background: #2471ff;
+  padding: 10px 20px 10px 20px;
+  border: 3px solid #5994ff;
+  border-radius: 3px;
+  color: #d2e2ff;
+  transition: color 500ms, background-color 500ms;
+  &:hover {
+    background-color: white;
+    color: green;
+  }
+`;
 
 class Quiz extends Component {
   constructor(props) {
@@ -44,29 +101,28 @@ class Quiz extends Component {
     const { location, price, distance, cuisine } = this.state;
     const { questions, cuisines } = this.props;
     return (
-      <div>
-        <form onSubmit={this.handleCitySubmit}>
-          <p>Where you at?</p>
-          <label htmlFor="location">
-            <input
+      <FormWrapper>
+        <Form onSubmit={this.handleCitySubmit}>
+          <Label htmlFor="location">
+            <span>Where you at?</span>
+            <Input
               type="text"
+              id="location"
               name="location"
               value={location}
               onChange={this.handleChange}
             />
-          </label>
-          <input type="submit" value="Upload Location to Hive" />
-        </form>
+          </Label>
+          <Button type="submit">Upload Location to Hive</Button>
+        </Form>
 
-        <form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
           <RadioGroup
             handleChange={this.handleChange}
             stateValue={price}
             question={questions.price}
             name={Object.keys(questions)[0]}
           />
-
-          <br />
 
           <RadioGroup
             handleChange={this.handleChange}
@@ -75,8 +131,6 @@ class Quiz extends Component {
             name={Object.keys(questions)[1]}
           />
 
-          <br />
-
           <Select
             handleChange={this.handleChange}
             question={questions.cuisine}
@@ -84,10 +138,9 @@ class Quiz extends Component {
             cuisines={cuisines}
           />
 
-          <br />
-          <button type="submit">CHOOOOOOOSE</button>
-        </form>
-      </div>
+          <Button type="submit">CHOOOOOOOSE</Button>
+        </Form>
+      </FormWrapper>
     );
   }
 }
