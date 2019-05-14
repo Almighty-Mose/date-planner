@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Title = styled.p`
+const Title = styled.legend`
   background: #ffffff;
   height: 20px;
   padding: 2px 5px 2px 5px;
@@ -17,7 +17,7 @@ const RadioGroup = props => {
   const radioButtons = question.answers.map((answer, index) => {
     const id = `${name}${index}`;
     return (
-      <div key={id}>
+      <>
         <label htmlFor={id}>
           <input
             type="radio"
@@ -30,14 +30,14 @@ const RadioGroup = props => {
           {answer}
         </label>
         <br />
-      </div>
+      </>
     );
   });
   return (
-    <div>
+    <fieldset style={{ border: 'none' }}>
       <Title>{question.ask}</Title>
       {radioButtons}
-    </div>
+    </fieldset>
   );
 };
 
