@@ -1,8 +1,10 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 import styled from 'styled-components';
 import UsersContainer from './components/containers/UsersContainer';
 import QuizContainer from './components/containers/QuizContainer';
+import configureStore from './store/configureStore';
 
 const StyledHeader = styled.header`
   background-color: #282c34;
@@ -20,16 +22,20 @@ const StyledH2 = styled.h2`
   float: left;
 `;
 
+const store = configureStore();
+
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <StyledHeader>
-          <StyledH2>Date Planner</StyledH2>
-          <UsersContainer />
-        </StyledHeader>
-        <QuizContainer />
-      </div>
+      <Provider store={store}>
+        <div className="App">
+          <StyledHeader>
+            <StyledH2>Date Planner</StyledH2>
+            <UsersContainer />
+          </StyledHeader>
+          <QuizContainer />
+        </div>
+      </Provider>
     );
   }
 }

@@ -8,7 +8,6 @@ const QuizContainerStyle = styled.div`
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  border: 2px solid red;
 `;
 
 class QuizContainer extends Component {
@@ -56,7 +55,6 @@ class QuizContainer extends Component {
       .then(data => {
         const cuisineList = data.cuisines.map(c => c.cuisine.cuisine_name);
         this.setState({ cuisineAnswers: cuisineList });
-        // Unstuck!!!! De-nested cuisineAnswers.
       })
       .catch(error => console.log(error));
   }
@@ -65,9 +63,13 @@ class QuizContainer extends Component {
     const { questions, cuisineAnswers } = this.state;
 
     const questionNames = Object.keys(questions);
+    const questionState = Object.entries(questions);
     return (
       <QuizContainerStyle>
-        <QuizSidebar questionNames={questionNames} />
+        <QuizSidebar
+          questionNames={questionNames}
+          questionState={questionState}
+        />
         <Quiz
           cuisines={cuisineAnswers}
           questions={questions}
