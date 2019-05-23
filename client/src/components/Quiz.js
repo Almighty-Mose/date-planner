@@ -131,12 +131,12 @@ class Quiz extends Component {
             name={Object.keys(questions)[1]}
           />
 
-          <Select
+          {/* <Select
             handleChange={this.handleChange}
             question={questions.cuisine}
             stateValue={cuisine}
             cuisines={cuisines}
-          />
+          /> */}
 
           <Button type="submit">CHOOOOOOOSE</Button>
         </Form>

@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import QuizSidebar from '../QuizSidebar';
 import Quiz from '../Quiz';
@@ -28,7 +29,6 @@ class QuizContainer extends Component {
           ask: 'Whatchu wanna eat?',
         },
       },
-      cuisineAnswers: [],
     };
 
     this.fetchCity = this.fetchCity.bind(this);
@@ -54,13 +54,17 @@ class QuizContainer extends Component {
       .then(response => response.json())
       .then(data => {
         const cuisineList = data.cuisines.map(c => c.cuisine.cuisine_name);
-        this.setState({ cuisineAnswers: cuisineList });
+        this.props.dispatch({
+          type: 'ADD_CUISINES',
+          cuisineNames: cuisineList,
+        });
       })
       .catch(error => console.log(error));
   }
 
   render() {
-    const { questions, cuisineAnswers } = this.state;
+    const { questions } = this.state;
+    const { cuisines } = this.props;
 
     const questionNames = Object.keys(questions);
     const questionState = Object.entries(questions);
@@ -71,7 +75,7 @@ class QuizContainer extends Component {
           questionState={questionState}
         />
         <Quiz
-          cuisines={cuisineAnswers}
+          cuisines={cuisines}
           questions={questions}
           fetchCity={this.fetchCity}
         />
@@ -80,4 +84,10 @@ class QuizContainer extends Component {
   }
 }
 
-export default QuizContainer;
+const mapStateToProps = state => {
+  return {
+    cuisines: state.cuisineNames,
+  };
+};
+
+export default connect(mapStateToProps)(QuizContainer);
