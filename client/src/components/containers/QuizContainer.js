@@ -85,8 +85,9 @@ class QuizContainer extends Component {
 }
 
 const mapStateToProps = state => {
+  const { quiz } = state;
   return {
-    cuisines: state.cuisineNames,
+    cuisines: quiz.cuisineNames,
   };
 };
 

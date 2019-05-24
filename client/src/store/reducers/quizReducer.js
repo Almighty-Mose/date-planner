@@ -6,7 +6,7 @@ function quizReducer(state = initialState, action) {
   console.log('Quiz Reducer', action);
   switch (action.type) {
     case 'ADD_CUISINES':
-      return state.cuisineNames.concat(action.cuisineNames);
+      return { ...state, cuisineNames: action.cuisineNames };
 
     default:
       return state;
