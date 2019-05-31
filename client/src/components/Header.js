@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Title = styled.h1`
   margin: 0 auto;
+  padding: 15px;
   background-color: #f0f3bd;
-  min-height: 10vh;
-  align-items: center;
-  justify-content: flex-end;
-  font-size: 25;
+  font-size: 60px;
   color: #1bd67f;
 `;
 
-class Header extends Component {
-  render() {
-    return <Title>Date Planner</Title>;
-  }
-}
+const Header = () => {
+  return <Title>Date Planner</Title>;
+};
 
 export default Header;
