@@ -3,7 +3,6 @@ const initialState = {
 };
 
 function quizReducer(state = initialState, action) {
-  console.log('Quiz Reducer', action);
   switch (action.type) {
     case 'ADD_CUISINES':
       return { ...state, cuisineNames: action.cuisineNames };
