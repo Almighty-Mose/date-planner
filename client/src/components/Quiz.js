@@ -13,6 +13,7 @@ const FormWrapper = styled.div`
   background: #fff;
   padding: 20px;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  border-radius: 3px;
 `;
 
 const Form = styled.form`

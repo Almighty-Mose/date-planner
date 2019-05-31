@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import QuizSidebar from '../QuizSidebar';
 import Quiz from '../Quiz';
 
 const QuizContainerStyle = styled.div`
@@ -48,13 +48,14 @@ class QuizContainer extends Component {
   }
 
   fetchCuisines(cityId) {
+    const { dispatch } = this.props;
     const url = `https://developers.zomato.com/api/v2.1/cuisines?city_id=${cityId}`;
     const apiKey = process.env.REACT_APP_USER_KEY;
     fetch(url, { headers: { 'user-key': apiKey } })
       .then(response => response.json())
       .then(data => {
         const cuisineList = data.cuisines.map(c => c.cuisine.cuisine_name);
-        this.props.dispatch({
+        dispatch({
           type: 'ADD_CUISINES',
           cuisineNames: cuisineList,
         });
@@ -66,14 +67,8 @@ class QuizContainer extends Component {
     const { questions } = this.state;
     const { cuisines } = this.props;
 
-    const questionNames = Object.keys(questions);
-    const questionState = Object.entries(questions);
     return (
       <QuizContainerStyle>
-        <QuizSidebar
-          questionNames={questionNames}
-          questionState={questionState}
-        />
         <Quiz
           cuisines={cuisines}
           questions={questions}
