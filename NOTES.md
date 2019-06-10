@@ -172,3 +172,23 @@ An API call to Zomato (see above).
     - Makes a Zomato API call for a random restaurant scoped by distance/zip code probably
 
 Maybe it pulls from events too? Check if there's an API for finding events, concerts, that sort of thing
+
+
+NEW DEV CYCLE - RESTAURANTEUR
+
+users, locations, restaurants, favorites.
+We're just adding locations to the relationships we already have.
+A user can see restaurants in a location
+A user can see restaurants they've visited in a location
+A user can add restaurants to a location
+Favorite restaurants by location
+other users in area
+
+user has_many locations?
+restaurant belongs_to location
+location has_many users
+location has_many restaurants
+
+We need simple authentication for users.
+Where do restaurants come from? Does a user search for restaurants to add or build their own? Do they need to be unique?
+Locations must be unique in the database: find_or_create_by when saving restaurants/users
